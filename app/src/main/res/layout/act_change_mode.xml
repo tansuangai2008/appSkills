@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_night_model_operate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_60dp"
+        android:layout_marginTop="@dimen/margin_28dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_12dp"
+        android:paddingRight="@dimen/margin_12dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_light_model"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_red"
+            android:gravity="center"
+            android:text="白天模式" />
+
+        <TextView
+            android:id="@+id/tv_night_model"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_red"
+            android:gravity="center"
+            android:text="黑夜模式" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

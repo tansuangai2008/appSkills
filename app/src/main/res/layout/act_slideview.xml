@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加" />
+    </LinearLayout>
+
+
+    <SeekBar
+        android:id="@+id/sb_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.example.signatureview.SlideView
+        android:id="@+id/view_slideview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:backColor="#E4D8E6" />
+
+
+    <!--        <com.f1reking.signatureview.SignatureView-->
+    <!--            android:id="@+id/view_signature"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/btn_clear"-->
+    <!--            app:layout_constraintVertical_weight="1"-->
+    <!--            app:backColor="#F00"-->
+    <!--            />-->
+    <!--    <com.f1reking.signatureview_sample.GestureSignatureView-->
+    <!--        android:id="@+id/gsv_signature"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="title_tv" type="id" />
+    <item name="kline_weipanView" type="id" />
+    <item name="kline_weipanline" type="id" />
+    <item name="weipanView" type="id" />
+
+    <item name="layoutLoding" type="id" />
+    <item name="appBaseContentView" type="id" />
+
+    <item name="swipe_notification_container" type="id" />
+    <item name="reg_voucher_danmu" type="id" />
+    <item name="home_taskcenter_tips" type="id" />
+
+    <item name="data_picker_bottom_center" type="id" />
+
+    <declare-styleable name="SignatureView">
+        <attr name="penColor" format="color" />
+        <attr name="backColor" format="color" />
+        <attr name="penWidth" format="dimension" />
+    </declare-styleable>
+</resources>
