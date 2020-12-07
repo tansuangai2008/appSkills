@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <!--按照等比例平分/相当于LinearLayout 权重-->
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/atv_show_banner_first"
         android:layout_width="@dimen/margin_0dp"
         android:layout_height="@dimen/margin_100dp"
         android:background="@color/green"
         android:text="顶部第一广告"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintRight_toLeftOf="@+id/atv_show_banner_second"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/atv_show_banner_second"
@@ -21,9 +22,10 @@
         android:layout_height="@dimen/margin_100dp"
         android:background="@color/red"
         android:text="顶部第二广告"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/atv_show_banner_first"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintRight_toLeftOf="@+id/atv_show_banner_third"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/atv_show_banner_third"
@@ -31,8 +33,9 @@
         android:layout_height="@dimen/margin_100dp"
         android:background="@color/_ff00E8F8"
         android:text="顶部第三广告"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/atv_show_banner_second"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.4" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
