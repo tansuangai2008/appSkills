@@ -71,11 +71,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_second_barrier_second"
         app:layout_constraintLeft_toRightOf="@+id/tv_second_barrier_first" />
 
+    <!--圆形定位-->
     <TextView
         android:id="@+id/tv_second_barrier_third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="特立独行的C"
+        app:layout_constraintCircle="@id/tv_second_barrier_first"
+        app:layout_constraintCircleRadius="@dimen/margin_140dp"
+        app:layout_constraintCircleAngle="120"
         app:layout_constraintLeft_toRightOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="@+id/tv_second_barrier_first" />
 
@@ -102,11 +106,11 @@
         android:orientation="vertical"/>
 
     <!-- 展位符-->
-    <androidx.constraintlayout.widget.Placeholder
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_second_barrier_second"
-        app:content = "@+id/tv_second_barrier_third"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<!--    <androidx.constraintlayout.widget.Placeholder-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_second_barrier_second"-->
+<!--        app:content = "@+id/tv_second_barrier_third"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
