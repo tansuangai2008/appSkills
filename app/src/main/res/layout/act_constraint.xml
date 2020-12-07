@@ -72,10 +72,18 @@
         app:layout_constraintLeft_toRightOf="@+id/tv_second_barrier_first" />
 
     <TextView
+        android:id="@+id/tv_second_barrier_third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="特立独行的C"
         app:layout_constraintLeft_toRightOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="@+id/tv_second_barrier_first" />
+
+    <!--验证组的概念-->
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="tv_second_barrier_first,tv_second_barrier_second" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
