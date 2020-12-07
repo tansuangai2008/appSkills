@@ -11,6 +11,7 @@ import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
 import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -51,6 +52,27 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         })
         ll_photo_album.setOnClickListener(View.OnClickListener { ImagePickerLauncher.pickImage(this@MainActivity, PICK_AVATAR_REQUEST, R.string.set_head_image) })
+        var viewTreeObserver = ll_photo_album.viewTreeObserver
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                //判断ViewTreeObserver 是否live ,如果存在就移除
+                if(viewTreeObserver.isAlive){
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    //获取宽、高
+                    var viewWidth = ll_photo_album.measuredWidth
+                    var viewHeight = ll_photo_album.measuredHeight
+                    Log.e(TAG, "viewWidth = $viewWidth viewHeight = $viewHeight")
+                }
+            }
+        })
+
+        ll_limit_layout.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                ConstraintActivity.startAct(this@MainActivity)
+            }
+
+        })
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
