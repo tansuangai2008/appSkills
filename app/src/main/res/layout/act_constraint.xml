@@ -10,6 +10,7 @@
         android:layout_width="@dimen/margin_0dp"
         android:layout_height="@dimen/margin_100dp"
         android:background="@color/green"
+        android:gravity="center"
         android:text="顶部第一广告"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,7 +21,8 @@
         android:id="@+id/atv_show_banner_second"
         android:layout_width="@dimen/margin_0dp"
         android:layout_height="@dimen/margin_100dp"
-        android:background="@color/red"
+        android:background="@color/color_5f83f6"
+        android:gravity="center"
         android:text="顶部第二广告"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/atv_show_banner_first"
@@ -32,10 +34,48 @@
         android:layout_width="@dimen/margin_0dp"
         android:layout_height="@dimen/margin_100dp"
         android:background="@color/_ff00E8F8"
+        android:gravity="center"
         android:text="顶部第三广告"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/atv_show_banner_second"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--约束布局中的栅栏-->
+
+    <TextView
+        android:id="@+id/tv_second_barrier_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/c_FF7E00"
+        android:text="需要的A"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atv_show_banner_first" />
+
+    <TextView
+        android:id="@+id/tv_second_barrier_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/c_FC475E"
+        android:text="不需要的B"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_second_barrier_first" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tv_second_barrier_first,tv_second_barrier_second"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_second_barrier_second"
+        app:layout_constraintLeft_toRightOf="@+id/tv_second_barrier_first" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="特立独行的C"
+        app:layout_constraintLeft_toRightOf="@+id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/tv_second_barrier_first" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
