@@ -132,4 +132,23 @@
             android:gravity="center"
             android:text="约束布局" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_touch_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_50dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:background="@drawable/bg_btn_blue"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/ll_limit_layout">
+
+        <TextView
+            android:id="@+id/tv_touch_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="View的事件传递" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

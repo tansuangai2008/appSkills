@@ -12,6 +12,7 @@ import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import com.example.dispatch.TouchActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -69,6 +70,12 @@ class MainActivity : AppCompatActivity() {
         ll_limit_layout.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 ConstraintActivity.startAct(this@MainActivity)
+            }
+
+        })
+        ll_touch_layout.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                TouchActivity.startAct(this@MainActivity)
             }
 
         })

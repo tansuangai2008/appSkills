@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.example.dispatch.ATouchViewGroup
+        android:id="@+id/ll_atouchviewgroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_240dp"
+        android:background="@color/color_7ed321"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.example.dispatch.BTouchViewGroup
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_140dp"
+            android:background="@color/color_5F83F6">
+
+            <com.example.dispatch.TouchButton
+                android:id="@+id/btn_touch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40dp"
+                android:layout_gravity="center"
+                android:text="我是一个按钮噢!" />
+        </com.example.dispatch.BTouchViewGroup>
+
+    </com.example.dispatch.ATouchViewGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
