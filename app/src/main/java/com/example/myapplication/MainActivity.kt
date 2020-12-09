@@ -15,6 +15,8 @@ import android.view.ViewTreeObserver
 import com.example.dispatch.TouchActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
+import com.example.storage.AlbumActivity
+import com.example.storage.AlbumBrowerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
@@ -79,6 +81,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        ll_storage_layout.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                AlbumBrowerActivity.startAct(this@MainActivity)
+                AlbumActivity.startAct(this@MainActivity)
+            }
+
+        })
+
 
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,146 +9,169 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/ll_use_room"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_use_room"
+        <LinearLayout
+            android:id="@+id/ll_use_room"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Room 使用demo" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/ll_diy_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_use_room">
+            <TextView
+                android:id="@+id/tv_use_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Room 使用demo" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_diy_view"
+        <LinearLayout
+            android:id="@+id/ll_diy_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="canvas 画图" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_use_room">
 
-    <LinearLayout
-        android:id="@+id/ll_signature_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_diy_view">
+            <TextView
+                android:id="@+id/tv_diy_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="canvas 画图" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_signature_view"
+        <LinearLayout
+            android:id="@+id/ll_signature_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="电子签名" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_diy_view">
 
-    <LinearLayout
-        android:id="@+id/ll_recycle_helper"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_signature_view">
+            <TextView
+                android:id="@+id/tv_signature_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="电子签名" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_recycle_helper"
+        <LinearLayout
+            android:id="@+id/ll_recycle_helper"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="recycleView 拖动" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_signature_view">
 
-    <LinearLayout
-        android:id="@+id/ll_night_mode"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_recycle_helper">
+            <TextView
+                android:id="@+id/tv_recycle_helper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="recycleView 拖动" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_night_mode"
+        <LinearLayout
+            android:id="@+id/ll_night_mode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="App实现黑夜模式" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_recycle_helper">
 
-    <LinearLayout
-        android:id="@+id/ll_photo_album"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_night_mode">
+            <TextView
+                android:id="@+id/tv_night_mode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="App实现黑夜模式" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_photo_album"
+        <LinearLayout
+            android:id="@+id/ll_photo_album"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="相册" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_night_mode">
 
-    <LinearLayout
-        android:id="@+id/ll_limit_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_photo_album">
+            <TextView
+                android:id="@+id/tv_photo_album"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="相册" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_limit_layout"
+        <LinearLayout
+            android:id="@+id/ll_limit_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="约束布局" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_photo_album">
 
-    <LinearLayout
-        android:id="@+id/ll_touch_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50dp"
-        android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@drawable/bg_btn_blue"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/ll_limit_layout">
+            <TextView
+                android:id="@+id/tv_limit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="约束布局" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_touch_layout"
+        <LinearLayout
+            android:id="@+id/ll_touch_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="View的事件传递" />
-    </LinearLayout>
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_limit_layout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_touch_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="View的事件传递" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_storage_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_touch_layout">
+
+            <TextView
+                android:id="@+id/tv_storage_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="android 存储的问题" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
