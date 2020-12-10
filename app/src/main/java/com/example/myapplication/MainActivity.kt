@@ -12,6 +12,7 @@ import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 //判断ViewTreeObserver 是否live ,如果存在就移除
-                if(viewTreeObserver.isAlive){
+                if (viewTreeObserver.isAlive) {
                     viewTreeObserver.removeOnGlobalLayoutListener(this)
                     //获取宽、高
                     var viewWidth = ll_photo_album.measuredWidth
@@ -69,22 +70,28 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        ll_limit_layout.setOnClickListener(object :View.OnClickListener{
+        ll_limit_layout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 ConstraintActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_touch_layout.setOnClickListener(object : View.OnClickListener{
+        ll_touch_layout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 TouchActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_storage_layout.setOnClickListener(object :View.OnClickListener{
+        ll_storage_layout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                AlbumBrowerActivity.startAct(this@MainActivity)
+//                AlbumBrowerActivity.startAct(this@MainActivity)
                 AlbumActivity.startAct(this@MainActivity)
+            }
+
+        })
+        ll_coroutines_layout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                CoroutinesActivity.startAct(this@MainActivity)
             }
 
         })

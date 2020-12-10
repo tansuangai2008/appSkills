@@ -173,5 +173,23 @@
                 android:gravity="center"
                 android:text="android 存储的问题" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_coroutines_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_storage_layout">
+
+            <TextView
+                android:id="@+id/tv_coroutines_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="android 协程试炼" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
