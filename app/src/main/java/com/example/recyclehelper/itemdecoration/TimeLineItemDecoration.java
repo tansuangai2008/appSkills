@@ -15,11 +15,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.recyclehelper.ItemMoveListener;
 import com.example.recyclehelper.adapter.RecyclerViewAdapter;
 import com.example.recyclehelper.model.ItemEntity;
+
+import java.util.List;
 
 /**
  * author : ly
@@ -42,9 +46,11 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
     //时间轴结点的半径
     private float mNodeRadius;
     private Context context;
+    private ItemMoveListener itemMoveListener;
 
-    public TimeLineItemDecoration(Context context) {
+    public TimeLineItemDecoration(Context context, ItemMoveListener itemMoveListener) {
         this.context = context;
+        this.itemMoveListener = itemMoveListener;
         mPaint = new Paint();
         mPaint.setAntiAlias(true);  //抗锯齿
 //        mPaint.setColor(Color.RED);
@@ -151,22 +157,42 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
 //                c.save();
                 int saveCount = c.save();
                 View diyView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_yellow_tips, null, true);
-                Log.e(TAG, "view.getMeasuredWidth()="+view.getMeasuredWidth());
+                Log.e(TAG, "view.getMeasuredWidth()=" + view.getMeasuredWidth());
                 int tempWidth = View.MeasureSpec.makeMeasureSpec(view.getMeasuredWidth(), View.MeasureSpec.UNSPECIFIED);
                 int tempHeight = View.MeasureSpec.makeMeasureSpec(context.getResources().getDimensionPixelOffset(R.dimen.margin_40dp), View.MeasureSpec.UNSPECIFIED);
-                Log.e(TAG, "tempWidth()="+tempWidth );
+                Log.e(TAG, "tempWidth()=" + tempWidth);
                 diyView.measure(tempWidth, tempHeight);
                 diyView.layout(0, 0, tempWidth, tempHeight);
 //                c.translate(layoutParams.leftMargin, 1200);
 //                c.clipRect(0, 0, 2000, 1000);
                 c.translate(0, view.getTop());
+                itemMoveListener.moveItemTranslate(view.getTop());
 //                measureHoverView(parent, diyView);
-                diyView.draw(c);
+//                diyView.draw(c);
                 c.restoreToCount(saveCount);
 //                c.restore();
                 continue;
             } else {
-
+                RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+                if (layoutManager instanceof LinearLayoutManager) {
+                    LinearLayoutManager linearManager = (LinearLayoutManager) layoutManager;
+                    //获取最后一个可见view的位置
+                    int lastItemPosition = linearManager.findLastVisibleItemPosition();
+                    //获取第一个可见view的位置
+                    int firstItemPosition = linearManager.findFirstVisibleItemPosition();
+                    List<ItemEntity> list = recyclerViewAdapter.getAll();
+                    boolean hideFlag = false;
+                    for (int k = firstItemPosition; k <= lastItemPosition; k++) {
+                        ItemEntity itemEntity = list.get(k);
+                        if ("计算机".equals(itemEntity.getText())) {
+                            hideFlag = true;
+                            break;
+                        }
+                    }
+                    if (!hideFlag) {
+                        itemMoveListener.setVisible(false);
+                    }
+                }
             }
 
 
@@ -183,30 +209,30 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
 //        outRect.bottom = (int) mOffsetBottom;
     }
 
-    private void measureHoverView(RecyclerView parent, View hoverView){
+    private void measureHoverView(RecyclerView parent, View hoverView) {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) hoverView.getLayoutParams();
         int widthSize;
         int widthMode;
-        if(params.width == -1){
+        if (params.width == -1) {
             widthSize = parent.getMeasuredWidth();
             widthMode = View.MeasureSpec.EXACTLY;
-        }else {
+        } else {
             widthSize = parent.getMeasuredWidth();
             widthMode = View.MeasureSpec.AT_MOST;
         }
         int heightSize;
         int heightMode;
-        if(params.height == -1){
+        if (params.height == -1) {
             heightSize = parent.getMeasuredHeight();
             heightMode = View.MeasureSpec.EXACTLY;
-        }else {
+        } else {
             heightSize = parent.getMeasuredHeight();
             heightMode = View.MeasureSpec.AT_MOST;
         }
 
-         View.MeasureSpec.makeMeasureSpec(widthSize, widthMode);
-         View.MeasureSpec.makeMeasureSpec(heightSize, heightMode);
-        hoverView.layout(0, 0, hoverView.getMeasuredWidth(), hoverView.getMeasuredHeight() );
+        View.MeasureSpec.makeMeasureSpec(widthSize, widthMode);
+        View.MeasureSpec.makeMeasureSpec(heightSize, heightMode);
+        hoverView.layout(0, 0, hoverView.getMeasuredWidth(), hoverView.getMeasuredHeight());
 
 
     }

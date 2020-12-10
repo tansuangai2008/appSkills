@@ -39,7 +39,11 @@ public class RecyclerViewAdapter extends
         return new ItemViewHolder(view);
     }
 
-    public ItemEntity getItem(int position){
+    public List<ItemEntity> getAll() {
+        return mList;
+    }
+
+    public ItemEntity getItem(int position) {
         return mList.get(position);
     }
 
