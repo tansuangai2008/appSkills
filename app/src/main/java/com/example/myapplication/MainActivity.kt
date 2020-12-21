@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
+import com.example.fragment.UseFragmentActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
 import com.example.storage.AlbumActivity
@@ -92,6 +93,13 @@ class MainActivity : AppCompatActivity() {
         ll_coroutines_layout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 CoroutinesActivity.startAct(this@MainActivity)
+            }
+
+        })
+
+        ll_fragment_layout.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                UseFragmentActivity.startAct(this@MainActivity)
             }
 
         })

@@ -47,6 +47,7 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
     private float mNodeRadius;
     private Context context;
     private ItemMoveListener itemMoveListener;
+    private Rect mStickyHeaderRect = null;
 
     public TimeLineItemDecoration(Context context, ItemMoveListener itemMoveListener) {
         this.context = context;
@@ -156,21 +157,37 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
 //                relativeLayout.addView(textView,layoutParams);
 //                c.save();
                 int saveCount = c.save();
-                View diyView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_yellow_tips, null, true);
+                View diyView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_yellow_tips, null, false);
                 Log.e(TAG, "view.getMeasuredWidth()=" + view.getMeasuredWidth());
-                int tempWidth = View.MeasureSpec.makeMeasureSpec(view.getMeasuredWidth(), View.MeasureSpec.UNSPECIFIED);
-                int tempHeight = View.MeasureSpec.makeMeasureSpec(context.getResources().getDimensionPixelOffset(R.dimen.margin_40dp), View.MeasureSpec.UNSPECIFIED);
-                Log.e(TAG, "tempWidth()=" + tempWidth);
-                diyView.measure(tempWidth, tempHeight);
-                diyView.layout(0, 0, tempWidth, tempHeight);
-//                c.translate(layoutParams.leftMargin, 1200);
-//                c.clipRect(0, 0, 2000, 1000);
+                //必须经过测量和布局,View 才能被正常显示出来
+                measureHoverView(parent, diyView);
+//                int tempWidth = View.MeasureSpec.makeMeasureSpec(view.getMeasuredWidth(), View.MeasureSpec.UNSPECIFIED);
+//                int tempHeight = View.MeasureSpec.makeMeasureSpec(context.getResources().getDimensionPixelOffset(R.dimen.margin_40dp), View.MeasureSpec.UNSPECIFIED);
+//                Log.e(TAG, "tempWidth()=" + tempWidth);
+//                diyView.measure(tempWidth, tempHeight);
+//                diyView.layout(0, 0, tempWidth, tempHeight);
+                View tv_cc = diyView.findViewById(R.id.tv_cc);
                 c.translate(0, view.getTop());
                 itemMoveListener.moveItemTranslate(view.getTop());
-//                measureHoverView(parent, diyView);
-//                diyView.draw(c);
+                itemMoveListener.setVisible(false);
+
+                diyView.draw(c);
                 c.restoreToCount(saveCount);
-//                c.restore();
+                if (mStickyHeaderRect == null) {
+                    mStickyHeaderRect = new Rect();
+                }
+                int[] location = new int[2];
+                tv_cc.getLocationOnScreen(location);
+                Rect rect = new Rect();
+                tv_cc.getLocalVisibleRect(rect);
+                Rect rectFirst = new Rect();
+                tv_cc.getDrawingRect(rectFirst);
+                Log.e(TAG, "文本显示的rectFirst =" + rectFirst.toString());
+                Log.e(TAG, "文本显示的rect =" + rect.toString());
+                Log.e(TAG, "文本显示的坐标点 x =" + location[0] + " Y 坐标点=" + location[1]);
+                Log.e(TAG, "文本显示的width  =" + tv_cc.getMeasuredWidth() + "height=" + tv_cc.getMeasuredHeight());
+                Log.e(TAG, "文本显示的 right  =" + tv_cc.getRight() + "bottom=" + tv_cc.getBottom());
+                mStickyHeaderRect.set(0, 0, tv_cc.getMeasuredWidth(), tv_cc.getMeasuredHeight() + view.getTop());
                 continue;
             } else {
                 RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
@@ -209,30 +226,48 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
 //        outRect.bottom = (int) mOffsetBottom;
     }
 
+    /***
+     * canvas 添加的布局 需要自己测量和布局
+     */
     private void measureHoverView(RecyclerView parent, View hoverView) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) hoverView.getLayoutParams();
+        ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) hoverView.getLayoutParams();
+        if (params == null) {
+            params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, parent.getResources().getDimensionPixelOffset(R.dimen.margin_40dp));//这里根据layout布局来，
+            hoverView.setLayoutParams(params);
+        }
+
         int widthSize;
         int widthMode;
         if (params.width == -1) {
             widthSize = parent.getMeasuredWidth();
             widthMode = View.MeasureSpec.EXACTLY;
-        } else {
+        } else if(params.width == -2){
             widthSize = parent.getMeasuredWidth();
             widthMode = View.MeasureSpec.AT_MOST;
+        }else {
+            //否则则是具体的宽度数值，则用这个宽度和EXACTLY构建MeasureSpec。
+            widthSize = hoverView.getMeasuredWidth();
+            widthMode = View.MeasureSpec.EXACTLY;
         }
         int heightSize;
         int heightMode;
         if (params.height == -1) {
             heightSize = parent.getMeasuredHeight();
             heightMode = View.MeasureSpec.EXACTLY;
-        } else {
-            heightSize = parent.getMeasuredHeight();
+        } else if(params.height == -2){
+            heightSize = hoverView.getMeasuredHeight();
             heightMode = View.MeasureSpec.AT_MOST;
+        }else {
+            //否则则是具体的宽度数值，则用这个宽度和EXACTLY构建MeasureSpec。
+            heightSize = hoverView.getMeasuredHeight();
+            heightMode = View.MeasureSpec.EXACTLY;
         }
+        //依次调用measure,layout,draw 方法，将复杂头部显示在屏幕上
+        int toDrawWidthSpec = View.MeasureSpec.makeMeasureSpec(widthSize, widthMode);
+        int toDrawHeightSpec = View.MeasureSpec.makeMeasureSpec(heightSize, heightMode);
+        hoverView.measure(toDrawWidthSpec, toDrawHeightSpec);
 
-        View.MeasureSpec.makeMeasureSpec(widthSize, widthMode);
-        View.MeasureSpec.makeMeasureSpec(heightSize, heightMode);
-        hoverView.layout(0, 0, hoverView.getMeasuredWidth(), hoverView.getMeasuredHeight());
+        hoverView.layout(0, 0, toDrawWidthSpec, parent.getPaddingTop()+toDrawHeightSpec);
 
 
     }

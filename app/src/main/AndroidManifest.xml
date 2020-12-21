@@ -65,6 +65,11 @@
             android:name="com.example.coroutines.CoroutinesActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.fragment.UseFragmentActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

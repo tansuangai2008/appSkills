@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_show_fragment_a"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="显示fragment A"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_show_fragment_b"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="显示fragment B"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_fragments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/ll_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="horizontal" />-->
+
+
+    <!--        <fragment-->
+    <!--            android:id="@+id/fragment_a"-->
+    <!--            android:name="com.example.fragment.FragmentA"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent" />-->
+</LinearLayout>
