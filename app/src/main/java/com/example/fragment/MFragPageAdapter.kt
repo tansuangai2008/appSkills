@@ -18,4 +18,5 @@ class MFragPageAdapter(val fm: FragmentManager, val fragments: List<Fragment>) :
     override fun getItem(position: Int): Fragment {
         return fragments[position]
     }
+
 }
