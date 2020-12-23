@@ -12,6 +12,7 @@ import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import com.example.animal.AnimalsActivity
 import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
@@ -97,9 +98,15 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        ll_fragment_layout.setOnClickListener(object :View.OnClickListener{
+        ll_fragment_layout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 UseFragmentActivity.startAct(this@MainActivity)
+            }
+
+        })
+        ll_animal_layout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                AnimalsActivity.startAct(this@MainActivity)
             }
 
         })
