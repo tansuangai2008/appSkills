@@ -78,7 +78,6 @@ class AnimalsActivity : BaseActivity() {
         val animator = ObjectAnimator.ofFloat(tv_animal, "translationX", curTranslationX, -500f, curTranslationX)
         animator.duration = 5000
         animator.start()
-        Integer.parseInt
 
     }
 

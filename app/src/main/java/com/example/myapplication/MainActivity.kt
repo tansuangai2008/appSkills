@@ -16,6 +16,7 @@ import com.example.animal.AnimalsActivity
 import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
+import com.example.mvp.UserInfoActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.model.GLImage
 import com.example.storage.AlbumActivity
@@ -110,6 +111,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        ll_mvp_layout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                UserInfoActivity.startAct(this@MainActivity)
+            }
+
+        })
+
 
 
     }
