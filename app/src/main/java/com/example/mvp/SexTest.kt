@@ -20,13 +20,7 @@ public class SexTest {
         public fun setSex(@Sex sex: Int) {
             when (sex) {
                 MAN -> {
-                    if (1 != 1) {
-                        Log.e("SexTest", "1 != 1")
-                    }
-                    if (2 == 2) {
-                        Log.e("SexTest", "2 == 2")
-                    }
-                    println("000000")
+                    Log.e("SexTest", "2 == 2")
                 }
                 WOMEN -> {
                 }

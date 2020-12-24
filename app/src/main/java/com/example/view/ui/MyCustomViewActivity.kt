@@ -10,11 +10,11 @@ import kotlinx.android.synthetic.main.act_my_custom_view.*
  *  date : 2020/9/10 10:28
  *  description : 自定义UI界面
  */
-class MyCustomViewActivity : AppCompatActivity(){
+class MyCustomViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_my_custom_view)
-        title_tv.setText("自测页面")
+        title_tv.text = "自测页面"
     }
 }

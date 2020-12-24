@@ -1,28 +1,29 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
-import com.example.room.ui.RoomUseActivity
-import com.example.view.ui.MyCustomViewActivity
-import com.example.signatureview.SlideViewActivity
-import com.example.recyclehelper.ui.RecycleViewHelperActivity
-import com.example.nightmode.NightModeActivity
-import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.appcompat.app.AppCompatActivity
 import com.example.animal.AnimalsActivity
 import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
 import com.example.mvp.UserInfoActivity
+import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
+import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
 import com.example.photoalbum.common.media.model.GLImage
+import com.example.recyclehelper.ui.RecycleViewHelperActivity
+import com.example.room.ui.RoomUseActivity
+import com.example.signatureview.SlideViewActivity
 import com.example.storage.AlbumActivity
-import com.example.storage.AlbumBrowerActivity
+import com.example.view.ui.MyCustomViewActivity
+import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.ArrayList
+import java.util.*
+
 
 /**
  * demo 入口主页
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val kv = MMKV.defaultMMKV()
+        kv.encode("bool", true)
+        Log.e(TAG,"bool: " + kv.decodeBool("bool"))
+
         ll_use_room.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, RoomUseActivity::class.java)

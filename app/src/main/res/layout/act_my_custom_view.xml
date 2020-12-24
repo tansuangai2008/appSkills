@@ -52,6 +52,13 @@
     <com.example.view.CustomView
         android:id="@+id/ll_custom_view"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <fragment
+        android:id="@+id/circle_view_fragment"
+        android:name="com.example.view.fragment.CircleViewFragment"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 
