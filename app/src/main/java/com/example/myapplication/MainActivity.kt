@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         kv.encode("bool", true)
         Log.e(TAG,"bool: " + kv.decodeBool("bool"))
 
+        tv_use_room.test()
         ll_use_room.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, RoomUseActivity::class.java)

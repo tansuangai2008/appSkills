@@ -97,6 +97,7 @@ public class CircleView extends View {
         outPaint.setColor(Color.RED);
         outPaint.setAlpha(50);
         outPaint.setStrokeCap(Paint.Cap.ROUND);
+
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
@@ -104,6 +105,7 @@ public class CircleView extends View {
         paint.setColor(Color.WHITE);
         paint.setAlpha(50);
         paint.setStrokeCap(Paint.Cap.ROUND);
+
         rectF = new RectF();
         innerRectf = new RectF();
 
@@ -118,7 +120,7 @@ public class CircleView extends View {
         super.onDraw(canvas);
 //        canvas.drawArc(rectF, 0, 360, false, paint);
         canvas.drawArc(rectF, 180, 300, false, outPaint);
-//        canvas.drawArc(rectF, 240, currentAngle, false, paint);
+        canvas.drawArc(rectF, 180, currentAngle, false, paint);
         String s = "弧度：" + currentAngle;
         float textWidth = mArrowPaint.measureText(s);
         canvas.drawText("弧度：" + currentAngle, rectF.centerX()-textWidth/2 , rectF.bottom , mArrowPaint);

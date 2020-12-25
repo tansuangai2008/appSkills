@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.app.Application
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.example.photoalbum.NimUIKit
 import com.facebook.stetho.Stetho
 import com.tencent.mmkv.MMKV
@@ -14,7 +16,8 @@ import com.tencent.mmkv.MMKV
  */
 class MyApplication : Application() {
     companion object {
-        private val TAG : String  = MyApplication.javaClass.simpleName
+        private val TAG: String = MyApplication.javaClass.simpleName
+
         init {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
@@ -26,5 +29,7 @@ class MyApplication : Application() {
         NimUIKit.init(this)
         val rootDir = MMKV.initialize(this)
         Log.e(TAG, "rootDir = $rootDir")
+        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecyclerChecker())
+
     }
 }
