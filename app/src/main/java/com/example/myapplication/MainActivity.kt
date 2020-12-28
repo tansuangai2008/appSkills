@@ -10,6 +10,7 @@ import com.example.animal.AnimalsActivity
 import com.example.coroutines.CoroutinesActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
+import com.example.logger.Logger
 import com.example.mvp.UserInfoActivity
 import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         val kv = MMKV.defaultMMKV()
         kv.encode("bool", true)
         Log.e(TAG,"bool: " + kv.decodeBool("bool"))
-
         tv_use_room.test()
         ll_use_room.setOnClickListener(View.OnClickListener {
             val intent = Intent()
