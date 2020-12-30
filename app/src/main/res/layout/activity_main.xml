@@ -245,5 +245,23 @@
                 android:gravity="center"
                 android:text="mvp 试炼" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_viewbinding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/bg_btn_blue"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ll_mvp_layout">
+
+            <TextView
+                android:id="@+id/tv_viewbinding_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="viewBinding 试炼" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

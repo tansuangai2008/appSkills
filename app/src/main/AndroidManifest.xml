@@ -78,7 +78,10 @@
             android:name="com.example.mvp.UserInfoActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="com.example.viewbind.ViewBindActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
 
     </application>
 

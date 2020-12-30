@@ -21,6 +21,7 @@ import com.example.room.ui.RoomUseActivity
 import com.example.signatureview.SlideViewActivity
 import com.example.storage.AlbumActivity
 import com.example.view.ui.MyCustomViewActivity
+import com.example.viewbind.ViewBindActivity
 import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val kv = MMKV.defaultMMKV()
         kv.encode("bool", true)
-        Log.e(TAG,"bool: " + kv.decodeBool("bool"))
+        Log.e(TAG, "bool: " + kv.decodeBool("bool"))
         tv_use_room.test()
         ll_use_room.setOnClickListener(View.OnClickListener {
             val intent = Intent()
@@ -124,7 +125,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
+        ll_viewbinding_layout.setOnClickListener {
+            ViewBindActivity.startAct(this@MainActivity)
+        }
 
 
     }

@@ -7,6 +7,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdkVersion 21
@@ -22,7 +26,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -53,7 +59,6 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation project(':photoAlbum')
     implementation 'com.tencent:mmkv-static:1.2.6'
-
 
 
 }
