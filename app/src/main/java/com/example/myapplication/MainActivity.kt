@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import com.example.animal.AnimalsActivity
 import com.example.coroutines.CoroutinesActivity
+import com.example.databinding.PersonActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
 import com.example.logger.Logger
@@ -128,6 +129,10 @@ class MainActivity : AppCompatActivity() {
         ll_viewbinding_layout.setOnClickListener {
             ViewBindActivity.startAct(this@MainActivity)
         }
+        ll_databinding_layout.setOnClickListener {
+            PersonActivity.startAct(this@MainActivity)
+        }
+
 
 
     }
