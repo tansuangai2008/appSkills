@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import com.example.animal.AnimalsActivity
+import com.example.coordinator.CoordinatorActivity
 import com.example.coroutines.CoroutinesActivity
 import com.example.databinding.PersonActivity
 import com.example.dispatch.TouchActivity
@@ -132,7 +133,9 @@ class MainActivity : AppCompatActivity() {
         ll_databinding_layout.setOnClickListener {
             PersonActivity.startAct(this@MainActivity)
         }
-
+        ll_coordinator_layout.setOnClickListener {
+            CoordinatorActivity.startAct(this@MainActivity)
+        }
 
 
     }
