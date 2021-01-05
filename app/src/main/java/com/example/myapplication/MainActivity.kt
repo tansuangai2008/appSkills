@@ -33,7 +33,7 @@ import java.util.*
 /**
  * demo 入口主页
  */
-class MainActivity : AppCompatActivity() {
+public class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         ll_matrix_layout.setOnClickListener {
+            getTagStr("LaBuLa!!")
             MatrixActivity.startAct(this@MainActivity)
         }
 
@@ -169,4 +170,9 @@ class MainActivity : AppCompatActivity() {
         private val TAG = MainActivity::class.java.simpleName
         private const val PICK_AVATAR_REQUEST = 0x0E
     }
+
+    public fun getTagStr(tempStr: String): String {
+        return "Str"
+    }
+
 }

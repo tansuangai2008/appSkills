@@ -34,11 +34,16 @@ public class PersonActivity extends BaseActivity {
         ActPersonBinding binding = DataBindingUtil.setContentView(this, R.layout.act_person);
         binding.setPerson(person);
         binding.setMainActivity(this);
+        getTagStr("BBBB");
     }
 
     public void setButtonClick(View view) {
         person.setFirstName("I am Yang liu");
         person.setLastName("I am Liu Yang");
         person.setAge(28);
+    }
+
+    public String getTagStr(String tempStr) {
+        return "Str";
     }
 }
