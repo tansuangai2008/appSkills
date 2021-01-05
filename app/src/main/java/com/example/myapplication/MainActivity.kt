@@ -13,6 +13,7 @@ import com.example.databinding.PersonActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
 import com.example.logger.Logger
+import com.example.matrix.MatrixActivity
 import com.example.mvp.UserInfoActivity
 import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
@@ -135,6 +136,10 @@ class MainActivity : AppCompatActivity() {
         }
         ll_coordinator_layout.setOnClickListener {
             CoordinatorActivity.startAct(this@MainActivity)
+        }
+
+        ll_matrix_layout.setOnClickListener {
+            MatrixActivity.startAct(this@MainActivity)
         }
 
 

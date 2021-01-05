@@ -3,6 +3,7 @@ package com.example.coordinator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
 import com.google.android.material.appbar.AppBarLayout
@@ -30,6 +31,7 @@ public class CoordinatorActivity :BaseActivity() {
         setContentView(R.layout.act_coordinator)
         app_bar_layout.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
+                Log.e(TAG, "onOffsetChanged verticalOffset = $verticalOffset" +" =totalScrollRange="+appBarLayout?.totalScrollRange)
                 if (verticalOffset <= -head_layout.height / 2) {
                     collapsing_toolbar_layout.title = "看看就好了!"
                 } else {
