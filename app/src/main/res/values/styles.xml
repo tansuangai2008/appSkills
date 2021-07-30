@@ -80,28 +80,21 @@
         <item name="colorAccent">@color/blue</item>
     </style>
 
-    <style name="Theme3" parent="AppTheme">
-        <item name="colorPrimary">@android:color/holo_green_dark</item>
-        <item name="enforceMaterialTheme">false</item>
-        <item name="android:textColorHint">@color/green</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="colorControlNormal">@color/yellow</item>
-        <item name="colorControlActivated">@color/yellow</item>
-        <item name="colorControlHighlight">@color/yellow</item>
-        <item name="colorAccent">@color/blue</item>
-    </style>
 
     <style name="filled_box_dense_new" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
-        <item name="enforceMaterialTheme">true</item>
-        <item name="android:textColorHint">@color/green</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="colorControlNormal">@color/red</item>
-        <item name="colorAccent">@color/blue</item>
-        <item name="boxStrokeColor">#fff</item>
-        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeColor">@color/text_input_layout_stroke_color</item>
+        <item name="hintTextColor">@color/text_color_hint_filled_box</item>
+        <item name="android:paddingLeft">@dimen/margin_0dp</item>
     </style>
+
+
+    <style name="AppTheme_TextLayout" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorHint">@color/green</item>
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">@color/blue</item>
+        <item name="colorControlHighlight">@color/yellow</item>
+    </style>
+
 
     <style name="TextInputAppTheme" parent="Base.TextAppearance.AppCompat.Caption">
         <item name="android:textColor">@color/red</item>

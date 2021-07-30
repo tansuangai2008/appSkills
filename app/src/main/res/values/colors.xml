@@ -803,6 +803,8 @@
     <color name="color_FF7900">#FF7900</color>
     <color name="color_i527DFF">#527DFF</color>
     <color name="color_D6E2FF">#D6E2FF</color>
+    <color name="color_9096BB">#9096BB</color>
+    <color name="color_252C58">#252C58</color>
 
     <color name="app_title_bar_color_v3">@color/color_app_bg_v3</color>
     <color name="app_common_content_v3">#2C384A</color>

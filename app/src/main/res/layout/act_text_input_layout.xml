@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_172346"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,18 +32,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        style="@style/filled_box_dense_new"
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_70dp"
         android:layout_marginTop="@dimen/margin_20dp"
-        android:paddingTop="@dimen/margin_16dp"
-        android:hint="FilledBox.Dense">
-<!--        app:hintTextAppearance="@style/TextInputAppTheme"-->
+        android:hint="FilledBox.Dense"
+        app:boxBackgroundColor="@color/white_no_theme"
+        app:boxCornerRadiusTopEnd="@dimen/margin_0dp"
+        app:boxCornerRadiusTopStart="@dimen/margin_0dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-<!--        android:theme="@style/Theme2"-->
 
     </com.google.android.material.textfield.TextInputLayout>
 
