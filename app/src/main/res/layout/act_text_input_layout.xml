@@ -31,18 +31,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/ccnew"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_70dp"
         android:layout_marginTop="@dimen/margin_20dp"
-        android:hint="FilledBox.Dense"
-        app:hintTextAppearance="@style/TextInputAppTheme">
-
+        android:paddingTop="@dimen/margin_16dp"
+        android:hint="FilledBox.Dense">
+<!--        app:hintTextAppearance="@style/TextInputAppTheme"-->
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme2" />
+            android:layout_height="wrap_content" />
+<!--        android:theme="@style/Theme2"-->
 
     </com.google.android.material.textfield.TextInputLayout>
 
