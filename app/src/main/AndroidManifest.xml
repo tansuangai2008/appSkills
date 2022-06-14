@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity  android:name="com.example.myapplication.MainActivity"
+        <activity
+            android:name="com.example.myapplication.MainActivity"
             android:theme="@style/AppThemeFirst">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -95,10 +96,14 @@
             android:name="com.example.matrix.MatrixActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
-<!--        <activity-->
-<!--            android:name="com.example.TextInputActivity"-->
-<!--            android:configChanges="orientation|screenSize"-->
-<!--            android:screenOrientation="portrait" />-->
+        <activity
+            android:name="com.example.myruler.MyRulerViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <!--        <activity-->
+        <!--            android:name="com.example.TextInputActivity"-->
+        <!--            android:configChanges="orientation|screenSize"-->
+        <!--            android:screenOrientation="portrait" />-->
 
     </application>
 

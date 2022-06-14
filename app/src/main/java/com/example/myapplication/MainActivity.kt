@@ -15,6 +15,7 @@ import com.example.fragment.UseFragmentActivity
 import com.example.logger.Logger
 import com.example.matrix.MatrixActivity
 import com.example.mvp.UserInfoActivity
+import com.example.myruler.MyRulerViewActivity
 import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
@@ -140,7 +141,8 @@ public class MainActivity : AppCompatActivity() {
 
         ll_matrix_layout.setOnClickListener {
             getTagStr("LaBuLa!!")
-            MatrixActivity.startAct(this@MainActivity)
+//            MatrixActivity.startAct(this@MainActivity)
+            MyRulerViewActivity.startAct(this@MainActivity)
         }
 
 

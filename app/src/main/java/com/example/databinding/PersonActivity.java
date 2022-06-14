@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.myapplication.BaseActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.annotation.AspectAnalyze;
 import com.example.myapplication.databinding.ActPersonBinding;
 
 /**
@@ -37,6 +38,7 @@ public class PersonActivity extends BaseActivity {
         getTagStr("BBBB");
     }
 
+    @AspectAnalyze(name = "setButtonClick")
     public void setButtonClick(View view) {
         person.setFirstName("I am Yang liu");
         person.setLastName("I am Liu Yang");
@@ -44,6 +46,6 @@ public class PersonActivity extends BaseActivity {
     }
 
     public String getTagStr(String tempStr) {
-        return "Str";
+        return tempStr;
     }
 }

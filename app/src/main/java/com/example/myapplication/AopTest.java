@@ -20,8 +20,8 @@ import org.aspectj.lang.annotation.Pointcut;
 public class AopTest {
     private static final String TAG = AopTest.class.getSimpleName();
 
-//    @Pointcut("execution(* com.example.databinding.PersonActivity.getTagStr(..))")
-    @Pointcut("execution(* com.example.myapplication.MainActivity.getTagStr(..))")
+    @Pointcut("execution(* com.example.databinding.PersonActivity.getTagStr(..))")
+//    @Pointcut("execution(* com.example.myapplication.MainActivity.getTagStr(..))")
     public void methodGetResult() {
 
     }
