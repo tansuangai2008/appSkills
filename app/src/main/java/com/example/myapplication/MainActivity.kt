@@ -24,7 +24,6 @@ import com.example.room.ui.RoomUseActivity
 import com.example.signatureview.SlideViewActivity
 import com.example.storage.AlbumActivity
 import com.example.view.ui.MyCustomViewActivity
-import com.example.viewbind.ViewBindActivity
 import com.tencent.mmkv.MMKV
 import java.util.*
 
@@ -129,9 +128,6 @@ public class MainActivity : AppCompatActivity() {
             }
 
         })
-        binding.llViewbindingLayout.setOnClickListener {
-            ViewBindActivity.startAct(this@MainActivity)
-        }
         binding.llDatabindingLayout.setOnClickListener {
             PersonActivity.startAct(this@MainActivity)
         }
