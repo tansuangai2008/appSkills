@@ -21,6 +21,7 @@ class AlbumAdapter(val context: Context, val imageList: List<Uri>, val imageSize
 //    constructor(context: Context, imageList: List<Uri>, imageSize: Int)
 
     private lateinit var binding: ItemAlbumBinding
+    public lateinit var itemOnclickListener: ItemOnclickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = ItemAlbumBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -33,6 +34,13 @@ class AlbumAdapter(val context: Context, val imageList: List<Uri>, val imageSize
         val uri = imageList[position]
         val options = RequestOptions().placeholder(R.drawable.album_loading_bg).override(imageSize, imageSize)
         Glide.with(context).load(uri).apply(options).into(holder.imageView)
+        itemOnclickListener?.let {
+            holder.imageView.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View?) {
+                    it.onClick(position)
+                }
+            })
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +48,12 @@ class AlbumAdapter(val context: Context, val imageList: List<Uri>, val imageSize
     }
 
     inner class ViewHolder(itemView: ItemAlbumBinding) : RecyclerView.ViewHolder(binding.root) {
-       var imageView = itemView.imageView
+        var imageView = itemView.imageView
     }
+
+
+    interface ItemOnclickListener {
+        fun onClick(position: Int)
+    }
+
 }

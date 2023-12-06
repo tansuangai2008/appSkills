@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActStorageBinding
+import com.example.photoalbum.common.media.imagepicker.Constants
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
 import java.io.File
@@ -43,21 +44,31 @@ class AlbumActivity : BaseActivity() {
             context.startActivity(intent)
         }
     }
+
     private lateinit var binding: ActStorageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActStorageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val permissionsToRequire = ArrayList<String>()
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            permissionsToRequire.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            permissionsToRequire.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        }
-        if (permissionsToRequire.isNotEmpty()) {
-            ActivityCompat.requestPermissions(this, permissionsToRequire.toTypedArray(), 0)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkPermission(Manifest.permission.READ_MEDIA_IMAGES) && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) && checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                //根据业务需求、进行实际的权限允许下的操作
+            } else {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE),
+                        Constants.REQUEST_PERMISSION_STORAGE)
+            }
+        } else {
+            val permissionsToRequire = ArrayList<String>()
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequire.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequire.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+            if (permissionsToRequire.isNotEmpty()) {
+                ActivityCompat.requestPermissions(this, permissionsToRequire.toTypedArray(), 0)
+            }
         }
 
 
@@ -176,5 +187,9 @@ class AlbumActivity : BaseActivity() {
             }
         }
 
+    }
+
+    fun checkPermission(permission: String): Boolean {
+        return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
     }
 }

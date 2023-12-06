@@ -6,11 +6,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.BaseActivity
-import com.example.myapplication.R
 import com.example.myapplication.databinding.ActAlbumBinding
+import com.example.utils.ImagePathHelper
 import kotlin.concurrent.thread
 
 /**
@@ -45,6 +46,11 @@ class AlbumBrowerActivity : BaseActivity() {
                 val adapter = AlbumAdapter(this@AlbumBrowerActivity, imageList, imageSize)
                 binding.rvAlbums.layoutManager = GridLayoutManager(this@AlbumBrowerActivity, columns)
                 binding.rvAlbums.adapter = adapter
+                adapter.itemOnclickListener = object : AlbumAdapter.ItemOnclickListener {
+                    override fun onClick(position: Int) {
+                        Log.e(TAG, "当前选中图片的地址=" + ImagePathHelper.getRealPathFromUri(this@AlbumBrowerActivity, adapter.imageList[position]))
+                    }
+                }
                 loadImages(adapter)
                 return false
             }
