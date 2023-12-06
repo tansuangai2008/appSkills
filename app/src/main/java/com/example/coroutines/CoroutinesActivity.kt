@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_coroutines.*
+import com.example.myapplication.databinding.ActCoroutinesBinding
 import kotlinx.coroutines.*
 
 /**
@@ -29,13 +29,14 @@ class CoroutinesActivity : BaseActivity() {
 
     private val uiDispatcher: CoroutineDispatcher = Dispatchers.Main
     private lateinit var job: Job
-
+    private lateinit var binding: ActCoroutinesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_coroutines)
+        binding = ActCoroutinesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         job = Job()
-        btn_click.setOnClickListener {
+        binding.btnClick.setOnClickListener {
             click()
 //            tv_show_content.text = "我是click事件中给的值!!!"
 
@@ -53,10 +54,10 @@ class CoroutinesActivity : BaseActivity() {
         uiScope.launch {
             val myJob = uiScope.launch {
                 delay(10000L)
-                tv_show_content.text = "我是协程中给的值!!!!"
+                binding.tvShowContent.text = "我是协程中给的值!!!!"
             }
             myJob.join()  //Suspend function 'join' should be called only from a coroutine or another suspend function
-            tv_show_content.text = "我是click事件中给的值!!!"
+            binding.tvShowContent.text = "我是click事件中给的值!!!"
         }
 
         //挂起函数“join”只能从协程或其他挂起函数调用

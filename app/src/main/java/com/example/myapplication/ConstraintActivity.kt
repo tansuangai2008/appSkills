@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.example.myapplication.databinding.ActConstraintBinding
 
 /**
  *  author : ly
@@ -19,8 +20,11 @@ class ConstraintActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActConstraintBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_constraint)
+        binding = ActConstraintBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }

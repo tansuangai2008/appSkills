@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_matrix.*
+import com.example.myapplication.databinding.ActMatrixBinding
 
 /**
  *  author : ly
@@ -25,17 +25,20 @@ public class MatrixActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActMatrixBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_matrix)
+        binding = ActMatrixBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         var matrix = Matrix()
 //        matrix.setRotate(45F,iv_matrix_fruit.width/2f, iv_matrix_fruit.height/2f)
-        iv_matrix_fruit.post {
-            Log.e(TAG, "iv_matrix_fruit.width = "+iv_matrix_fruit.width)
+        binding.ivMatrixFruit.post {
+            Log.e(TAG, "iv_matrix_fruit.width = " + binding.ivMatrixFruit.width)
 //            matrix.setScale(0.5f,0.5f, iv_matrix_fruit.width/2f, iv_matrix_fruit.height/2f)
             matrix.setRotate(45F)
-            Log.e(TAG, "matrix ="+ matrix.toString())
-            iv_matrix_fruit.imageMatrix = matrix
+            Log.e(TAG, "matrix =" + matrix.toString())
+            binding.ivMatrixFruit.imageMatrix = matrix
         }
 
     }

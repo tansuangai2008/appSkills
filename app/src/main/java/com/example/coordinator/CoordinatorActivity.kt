@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
+import com.example.myapplication.databinding.ActCoordinatorBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.jaeger.library.StatusBarUtil
-import kotlinx.android.synthetic.main.act_coordinator.*
 
 /**
  *  author : ly
  *  date : 2021/1/4 14:48
  *  description : 协同布局
  */
-public class CoordinatorActivity :BaseActivity() {
+public class CoordinatorActivity : BaseActivity() {
 
     companion object {
         val TAG: String = CoordinatorActivity::class.java.simpleName
@@ -26,16 +26,19 @@ public class CoordinatorActivity :BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActCoordinatorBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_coordinator)
-        app_bar_layout.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
+        binding = ActCoordinatorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.appBarLayout.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
-                Log.e(TAG, "onOffsetChanged verticalOffset = $verticalOffset" +" =totalScrollRange="+appBarLayout?.totalScrollRange)
-                if (verticalOffset <= -head_layout.height / 2) {
-                    collapsing_toolbar_layout.title = "看看就好了!"
+                Log.e(TAG, "onOffsetChanged verticalOffset = $verticalOffset" + " =totalScrollRange=" + appBarLayout?.totalScrollRange)
+                if (verticalOffset <= -binding.headLayout.height / 2) {
+                    binding.collapsingToolbarLayout.title = "看看就好了!"
                 } else {
-                    collapsing_toolbar_layout.title = " "
+                    binding.collapsingToolbarLayout.title = " "
                 }
             }
         })

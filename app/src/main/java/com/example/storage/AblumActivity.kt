@@ -19,7 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_storage.*
+import com.example.myapplication.databinding.ActStorageBinding
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
 import java.io.File
@@ -43,10 +43,12 @@ class AlbumActivity : BaseActivity() {
             context.startActivity(intent)
         }
     }
+    private lateinit var binding: ActStorageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_storage)
+        binding = ActStorageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val permissionsToRequire = ArrayList<String>()
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissionsToRequire.add(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -59,12 +61,12 @@ class AlbumActivity : BaseActivity() {
         }
 
 
-        browseAlbum.setOnClickListener(object : View.OnClickListener {
+        binding.browseAlbum.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 AlbumBrowerActivity.startAct(this@AlbumActivity)
             }
         })
-        addImageToAlbum.setOnClickListener(object : View.OnClickListener {
+        binding.addImageToAlbum.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val bitmap = BitmapFactory.decodeResource(resources, R.drawable.storage_test_image)
                 val displayName = "${System.currentTimeMillis()}.jpg"
@@ -75,7 +77,7 @@ class AlbumActivity : BaseActivity() {
 
         })
 
-        pickFile.setOnClickListener(object : View.OnClickListener {
+        binding.pickFile.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 pickFileAndCopyUriToExternalFilesDir()
             }

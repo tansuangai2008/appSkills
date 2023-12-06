@@ -10,7 +10,7 @@ import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_album.*
+import com.example.myapplication.databinding.ActAlbumBinding
 import kotlin.concurrent.thread
 
 /**
@@ -31,18 +31,20 @@ class AlbumBrowerActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActAlbumBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_album)
-        rv_albums.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+        binding = ActAlbumBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.rvAlbums.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
-                rv_albums.viewTreeObserver.removeOnPreDrawListener(this)
+                binding.rvAlbums.viewTreeObserver.removeOnPreDrawListener(this)
                 val columns = 3
-                val imageSize = rv_albums.width / columns
+                val imageSize = binding.rvAlbums.width / columns
                 val adapter = AlbumAdapter(this@AlbumBrowerActivity, imageList, imageSize)
-                rv_albums.layoutManager = GridLayoutManager(this@AlbumBrowerActivity, columns)
-                rv_albums.adapter = adapter
+                binding.rvAlbums.layoutManager = GridLayoutManager(this@AlbumBrowerActivity, columns)
+                binding.rvAlbums.adapter = adapter
                 loadImages(adapter)
                 return false
             }

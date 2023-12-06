@@ -8,7 +8,7 @@ import android.view.View
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.ConstraintActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_touch_info.*
+import com.example.myapplication.databinding.ActTouchInfoBinding
 
 /**
  *  author : ly
@@ -26,12 +26,15 @@ class TouchActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActTouchInfoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_touch_info)
-        ll_atouchviewgroup.setOnClickListener(object : View.OnClickListener{
+        binding = ActTouchInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.llAtouchviewgroup.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-              Log.e(TAG, "想要干嘛呢!!!!")
+                Log.e(TAG, "想要干嘛呢!!!!")
             }
 
         })

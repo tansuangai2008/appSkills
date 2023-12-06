@@ -10,10 +10,10 @@ import com.alibaba.fastjson.JSON
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.Dispatcher
 import com.example.myapplication.R
+import com.example.myapplication.databinding.ActUseRoomBinding
 import com.example.room.dao.UserDataBase
 import com.example.room.dao.UserDataBase.Companion.getInstance
 import com.example.room.model.UserDTO
-import kotlinx.android.synthetic.main.act_use_room.*
 
 /**
  *  author : ly
@@ -25,16 +25,19 @@ class RoomUseActivity : BaseActivity(), View.OnClickListener {
         private val TAG: String = RoomUseActivity::class.java.simpleName
     }
 
+    private lateinit var bindView: ActUseRoomBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_use_room)
+        bindView = ActUseRoomBinding.inflate(layoutInflater)
+        setContentView(bindView.root)
         initView()
 
     }
 
     private fun initView() {
-        tv_add.setOnClickListener(this)
-        tv_delete.setOnClickListener(this)
+        bindView.tvAdd.setOnClickListener(this)
+        bindView.tvDelete.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -74,10 +77,10 @@ class RoomUseActivity : BaseActivity(), View.OnClickListener {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 0x001 -> {
-                    tv_room_result.text = "展示结果:" + JSON.toJSONString(msg.obj)
+                    bindView.tvRoomResult.text = "展示结果:" + JSON.toJSONString(msg.obj)
                 }
                 0x002 ->{
-                    tv_room_result.text = "展示结果:" + JSON.toJSONString(msg.obj)
+                    bindView.tvRoomResult.text = "展示结果:" + JSON.toJSONString(msg.obj)
                 }
             }
         }

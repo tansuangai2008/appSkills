@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.fragment_a.*
+import com.example.myapplication.databinding.FragmentABinding
 
 /**
  *  author : ly
@@ -14,9 +14,10 @@ import kotlinx.android.synthetic.main.fragment_a.*
  */
 class FragmentA : BaseFragment() {
 
+    private lateinit var binding: FragmentABinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var mView = inflater.inflate(R.layout.fragment_a, container, false)
-        return mView
+        binding = FragmentABinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -25,6 +26,6 @@ class FragmentA : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        tv_fragment_a.text = "我的路人甲"
+        binding.tvFragmentA.text = "我的路人甲"
     }
 }

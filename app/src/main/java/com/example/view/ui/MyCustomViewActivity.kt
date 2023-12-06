@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_my_custom_view.*
 import android.widget.SeekBar
 
 import android.widget.LinearLayout
+import com.example.myapplication.databinding.ActMyCustomViewBinding
 import com.example.view.SeekBarTips
 
 
@@ -18,30 +18,32 @@ import com.example.view.SeekBarTips
  */
 class MyCustomViewActivity : AppCompatActivity() {
 
+    private lateinit var actMyCustomViewBinding: ActMyCustomViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_my_custom_view)
-        title_tv.text = "Canvas 画图"
+        actMyCustomViewBinding = ActMyCustomViewBinding.inflate(layoutInflater)
+        setContentView(actMyCustomViewBinding.root)
+        actMyCustomViewBinding.titleTv.text = "Canvas 画图"
         initData()
     }
 
     private fun initData() {
-        val params = tv_indicator.layoutParams as LinearLayout.LayoutParams
-        indicator_seek_bar.setOnSeekBarChangeListener(object :
+        val params = actMyCustomViewBinding.tvIndicator.layoutParams as LinearLayout.LayoutParams
+        actMyCustomViewBinding.indicatorSeekBar.setOnSeekBarChangeListener(object :
                 SeekBarTips.OnIndicatorSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, indicatorOffset: Float) {
                 val indicatorText = "$progress%"
-                tv_indicator.text = indicatorText
+                actMyCustomViewBinding.tvIndicator.text = indicatorText
                 params.leftMargin = indicatorOffset.toInt()
-                tv_indicator.layoutParams = params
+                actMyCustomViewBinding.tvIndicator.layoutParams = params
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                tv_indicator.visibility = View.VISIBLE
+                actMyCustomViewBinding.tvIndicator.visibility = View.VISIBLE
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                tv_indicator.visibility = View.INVISIBLE
+                actMyCustomViewBinding.tvIndicator.visibility = View.INVISIBLE
             }
         })
     }

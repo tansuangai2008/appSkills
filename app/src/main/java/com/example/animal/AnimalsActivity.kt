@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_animals.*
+import com.example.myapplication.databinding.ActAnimalsBinding
 
 
 /**
@@ -27,30 +27,33 @@ class AnimalsActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActAnimalsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_animals)
-        tv_alpha.setOnClickListener(object : View.OnClickListener {
+        binding = ActAnimalsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.tvAlpha.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 showAlphaAnimals()
             }
 
         })
-        tv_rotation.setOnClickListener(object : View.OnClickListener {
+        binding.tvRotation.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 showRotationAnimals()
             }
 
         })
 
-        tv_translationX.setOnClickListener {
+        binding.tvTranslationX.setOnClickListener {
             showTranslationXAnimals()
         }
 
-        tv_scaleY.setOnClickListener {
+        binding.tvScaleY.setOnClickListener {
             showScaleYAnimals()
         }
-        tv_combine_animal.setOnClickListener {
+        binding.tvCombineAnimal.setOnClickListener {
             showCombineAnimals()
         }
     }
@@ -60,7 +63,7 @@ class AnimalsActivity : BaseActivity() {
      * 展示基本的属性动画
      */
     private fun showAlphaAnimals() {
-        val animator = ObjectAnimator.ofFloat(tv_animal, "alpha", 1f, 0f, 1f)
+        val animator = ObjectAnimator.ofFloat(binding.tvAnimal, "alpha", 1f, 0f, 1f)
         animator.duration = 5000
         animator.start()
 
@@ -68,14 +71,14 @@ class AnimalsActivity : BaseActivity() {
     }
 
     private fun showRotationAnimals() {
-        val animator = ObjectAnimator.ofFloat(tv_animal, "rotation", 0f, 360f)
+        val animator = ObjectAnimator.ofFloat(binding.tvAnimal, "rotation", 0f, 360f)
         animator.duration = 5000
         animator.start()
     }
 
     private fun showTranslationXAnimals() {
-        val curTranslationX: Float = tv_animal.translationX
-        val animator = ObjectAnimator.ofFloat(tv_animal, "translationX", curTranslationX, -500f, curTranslationX)
+        val curTranslationX: Float = binding.tvAnimal.translationX
+        val animator = ObjectAnimator.ofFloat(binding.tvAnimal, "translationX", curTranslationX, -500f, curTranslationX)
         animator.duration = 5000
         animator.start()
 
@@ -83,7 +86,7 @@ class AnimalsActivity : BaseActivity() {
 
 
     private fun showScaleYAnimals() {
-        val animator = ObjectAnimator.ofFloat(tv_animal, "scaleY", 1f, 3f, 1f)
+        val animator = ObjectAnimator.ofFloat(binding.tvAnimal, "scaleY", 1f, 3f, 1f)
         animator.duration = 5000
         animator.start()
     }
@@ -93,9 +96,9 @@ class AnimalsActivity : BaseActivity() {
      * 组合动画
      */
     private fun showCombineAnimals() {
-        val moveIn = ObjectAnimator.ofFloat(tv_animal, "translationX", -500f, 0f)
-        val rotate = ObjectAnimator.ofFloat(tv_animal, "rotation", 0f, 360f)
-        val fadeInOut = ObjectAnimator.ofFloat(tv_animal, "alpha", 1f, 0f, 1f)
+        val moveIn = ObjectAnimator.ofFloat(binding.tvAnimal, "translationX", -500f, 0f)
+        val rotate = ObjectAnimator.ofFloat(binding.tvAnimal, "rotation", 0f, 360f)
+        val fadeInOut = ObjectAnimator.ofFloat(binding.tvAnimal, "alpha", 1f, 0f, 1f)
         val animSet = AnimatorSet()
         animSet.play(rotate).with(fadeInOut).after(moveIn)
         animSet.duration = 5000

@@ -8,7 +8,7 @@ import com.example.mvp.contract.UserInfoContract
 import com.example.mvp.presenter.UserInfoPresenter
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_person_info.*
+import com.example.myapplication.databinding.ActPersonInfoBinding
 
 /**
  *  author : ly
@@ -26,9 +26,12 @@ public class UserInfoActivity : BaseActivity(), UserInfoContract.View {
         }
     }
 
+    private lateinit var binding: ActPersonInfoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_person_info)
+        binding = ActPersonInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         UserInfoPresenter(this)
         presenter?.start()
         SexTest.setSex(SexTest.MAN)
@@ -48,9 +51,9 @@ public class UserInfoActivity : BaseActivity(), UserInfoContract.View {
 
     override fun showUserInfo(userInfo: UserInfo) {
         if (userInfo != null) {
-            tv_name.text = "" + userInfo.age
-            tv_age.text = java.lang.String.valueOf(userInfo.age)
-            tv_address.text = userInfo.address
+            binding.tvName.text = "" + userInfo.age
+            binding.tvAge.text = java.lang.String.valueOf(userInfo.age)
+            binding.tvAddress.text = userInfo.address
         }
     }
 

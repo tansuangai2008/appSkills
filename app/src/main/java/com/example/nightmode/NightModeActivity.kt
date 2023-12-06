@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.myapplication.BaseActivity
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.act_change_mode.*
+import com.example.myapplication.databinding.ActChangeModeBinding
 
 /**
  *  author : ly
@@ -14,17 +14,20 @@ import kotlinx.android.synthetic.main.act_change_mode.*
  */
 class NightModeActivity : BaseActivity() {
 
+
+    private lateinit var binding: ActChangeModeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_change_mode)
-        tv_light_model.setOnClickListener(object : View.OnClickListener {
+        binding = ActChangeModeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.tvLightModel.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 getWindow().setWindowAnimations(R.style.ani_in_bottm_out_bottom);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
 
         })
-        tv_night_model.setOnClickListener(object : View.OnClickListener {
+        binding.tvNightModel.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 getWindow().setWindowAnimations(R.style.ani_in_bottm_out_bottom);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

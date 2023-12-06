@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.fragment_a.*
-import kotlinx.android.synthetic.main.fragment_b.*
+import com.example.myapplication.databinding.FragmentBBinding
 
 /**
  *  author : ly
@@ -16,9 +15,11 @@ import kotlinx.android.synthetic.main.fragment_b.*
  */
 class FragmentB : BaseFragment() {
 
+    private lateinit var binding: FragmentBBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var mView = inflater.inflate(R.layout.fragment_b, container, false)
-        return mView
+        binding = FragmentBBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
 
@@ -30,6 +31,6 @@ class FragmentB : BaseFragment() {
     override fun onResume() {
         super.onResume()
         Log.e(TAG, "我是路人乙")
-        tv_fragment_b.text = "我是路人乙"
+        binding.tvFragmentB.text = "我是路人乙"
     }
 }

@@ -12,9 +12,8 @@ import com.example.coroutines.CoroutinesActivity
 import com.example.databinding.PersonActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
-import com.example.logger.Logger
-import com.example.matrix.MatrixActivity
 import com.example.mvp.UserInfoActivity
+import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myruler.MyRulerViewActivity
 import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
@@ -27,7 +26,6 @@ import com.example.storage.AlbumActivity
 import com.example.view.ui.MyCustomViewActivity
 import com.example.viewbind.ViewBindActivity
 import com.tencent.mmkv.MMKV
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
@@ -36,110 +34,112 @@ import java.util.*
  */
 public class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val kv = MMKV.defaultMMKV()
         kv.encode("bool", true)
         Log.e(TAG, "bool: " + kv.decodeBool("bool"))
-        tv_use_room.test()
-        ll_use_room.setOnClickListener(View.OnClickListener {
+        binding.tvUseRoom.test()
+        binding.llUseRoom.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, RoomUseActivity::class.java)
             startActivity(intent)
         })
 
-        ll_diy_view.setOnClickListener(View.OnClickListener {
+        binding.llDiyView.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, MyCustomViewActivity::class.java)
             startActivity(intent)
         })
-        ll_signature_view.setOnClickListener(View.OnClickListener {
+        binding.llSignatureView.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, SlideViewActivity::class.java)
             startActivity(intent)
         })
-        ll_recycle_helper.setOnClickListener(View.OnClickListener {
+        binding.llRecycleHelper.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, RecycleViewHelperActivity::class.java)
             startActivity(intent)
         })
-        ll_night_mode.setOnClickListener(View.OnClickListener {
+        binding.llNightMode.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.setClass(this@MainActivity, NightModeActivity::class.java)
             startActivity(intent)
         })
-        ll_photo_album.setOnClickListener(View.OnClickListener { ImagePickerLauncher.pickImage(this@MainActivity, PICK_AVATAR_REQUEST, R.string.set_head_image) })
-        var viewTreeObserver = ll_photo_album.viewTreeObserver
+        binding.llPhotoAlbum.setOnClickListener(View.OnClickListener { ImagePickerLauncher.pickImage(this@MainActivity, PICK_AVATAR_REQUEST, R.string.set_head_image) })
+        var viewTreeObserver = binding.llPhotoAlbum.viewTreeObserver
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 //判断ViewTreeObserver 是否live ,如果存在就移除
                 if (viewTreeObserver.isAlive) {
                     viewTreeObserver.removeOnGlobalLayoutListener(this)
                     //获取宽、高
-                    var viewWidth = ll_photo_album.measuredWidth
-                    var viewHeight = ll_photo_album.measuredHeight
+                    var viewWidth = binding.llPhotoAlbum.measuredWidth
+                    var viewHeight = binding.llPhotoAlbum.measuredHeight
                     Log.e(TAG, "viewWidth = $viewWidth viewHeight = $viewHeight")
                 }
             }
         })
 
-        ll_limit_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llLimitLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 ConstraintActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_touch_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llTouchLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 TouchActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_storage_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llStorageLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 //                AlbumBrowerActivity.startAct(this@MainActivity)
                 AlbumActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_coroutines_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llCoroutinesLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 CoroutinesActivity.startAct(this@MainActivity)
             }
 
         })
 
-        ll_fragment_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llFragmentLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 UseFragmentActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_animal_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llAnimalLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 AnimalsActivity.startAct(this@MainActivity)
             }
 
         })
 
-        ll_mvp_layout.setOnClickListener(object : View.OnClickListener {
+        binding.llMvpLayout.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 UserInfoActivity.startAct(this@MainActivity)
             }
 
         })
-        ll_viewbinding_layout.setOnClickListener {
+        binding.llViewbindingLayout.setOnClickListener {
             ViewBindActivity.startAct(this@MainActivity)
         }
-        ll_databinding_layout.setOnClickListener {
+        binding.llDatabindingLayout.setOnClickListener {
             PersonActivity.startAct(this@MainActivity)
         }
-        ll_coordinator_layout.setOnClickListener {
+        binding.llCoordinatorLayout.setOnClickListener {
             CoordinatorActivity.startAct(this@MainActivity)
         }
 
-        ll_matrix_layout.setOnClickListener {
+        binding.llMatrixLayout.setOnClickListener {
             getTagStr("LaBuLa!!")
 //            MatrixActivity.startAct(this@MainActivity)
             MyRulerViewActivity.startAct(this@MainActivity)
