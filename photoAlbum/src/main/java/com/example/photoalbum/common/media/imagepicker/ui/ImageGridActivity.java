@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 
 import com.example.photoalbum.R;
+import com.example.photoalbum.common.media.Extras;
 import com.example.photoalbum.common.media.imagepicker.Constants;
 import com.example.photoalbum.common.media.imagepicker.ImagePicker;
 import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher;
@@ -138,12 +140,21 @@ public class ImageGridActivity extends ImageBaseActivity implements AbsDataSourc
         sectionAdapter.setOnImageItemClickListener(this);
         mImageFolderAdapter = new ImageFolderAdapter(this, null);
         onImageSelected(null, false);
-        if (checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        //兼容 android 13 版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkPermission(Manifest.permission.READ_MEDIA_IMAGES) && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) && checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                loadImageData(imagePicker.getOption());
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+                        Constants.REQUEST_PERMISSION_STORAGE);
+            }
+        } else if (checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) && checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
             loadImageData(imagePicker.getOption());
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                              Constants.REQUEST_PERMISSION_STORAGE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+                    Constants.REQUEST_PERMISSION_STORAGE);
         }
+
     }
 
     @Override
@@ -154,13 +165,13 @@ public class ImageGridActivity extends ImageBaseActivity implements AbsDataSourc
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 loadImageData(imagePicker.getOption());
             } else {
-                showToast("权限被禁止，无法选择本地图片");
+                showToast("Permission is forbidden, unable to select local picture");
             }
         } else if (requestCode == Constants.REQUEST_PERMISSION_CAMERA) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 ImagePickerLauncher.takePicture(this, Constants.REQUEST_CODE_TAKE, imagePicker.getOption());
             } else {
-                showToast("权限被禁止，无法打开相机");
+                showToast("Permission is forbidden, unable to open camera");
             }
         }
     }
@@ -306,6 +317,7 @@ public class ImageGridActivity extends ImageBaseActivity implements AbsDataSourc
             } else {
                 Intent intent = new Intent();
                 intent.putExtra(Constants.EXTRA_RESULT_ITEMS, imagePicker.getSelectedImages());
+                intent.putExtra(Extras.EXTRA_FILE_PATH, imagePicker.getSelectedImages().get(0).getPath());
                 setResult(RESULT_OK, intent);   //单选不需要裁剪，返回数据
                 finish();
             }

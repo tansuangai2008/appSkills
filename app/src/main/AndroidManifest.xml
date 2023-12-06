@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!-- 用于选择图片/文件上传/拍照/下载文件等 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <!-- 拍照视频语音等权限 -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <application
         android:name="com.example.myapplication.MyApplication"
         android:allowBackup="true"
@@ -14,7 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.myapplication.MainActivity"
-            android:exported ="true"
+            android:exported="true"
             android:theme="@style/AppThemeFirst">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,99 +31,94 @@
         <activity
             android:name="com.example.view.ui.MyCustomViewActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.room.ui.RoomUseActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.signature.ui.SignatureViewAct"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="landscape" />
         <activity
             android:name="com.example.signatureview.SlideViewActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="landscape" />
         <activity
             android:name="com.example.recyclehelper.ui.RecycleViewHelperActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.nightmode.NightModeActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.example.myapplication.ConstraintActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.dispatch.TouchActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.storage.AlbumBrowerActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.storage.AlbumActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.coroutines.CoroutinesActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.fragment.UseFragmentActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.animal.AnimalsActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.example.mvp.UserInfoActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.example.viewbind.ViewBindActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.databinding.PersonActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.coordinator.CoordinatorActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.matrix.MatrixActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.myruler.MyRulerViewActivity"
             android:configChanges="orientation|screenSize"
-            android:exported ="false"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <!--        <activity-->
         <!--            android:name="com.example.TextInputActivity"-->

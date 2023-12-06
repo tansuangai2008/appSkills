@@ -18,6 +18,7 @@ import com.example.myruler.MyRulerViewActivity
 import com.example.nightmode.NightModeActivity
 import com.example.photoalbum.common.media.imagepicker.Constants
 import com.example.photoalbum.common.media.imagepicker.ImagePickerLauncher
+import com.example.photoalbum.common.media.imagepicker.ui.ImageTakeActivity
 import com.example.photoalbum.common.media.model.GLImage
 import com.example.recyclehelper.ui.RecycleViewHelperActivity
 import com.example.room.ui.RoomUseActivity
@@ -25,7 +26,6 @@ import com.example.signatureview.SlideViewActivity
 import com.example.storage.AlbumActivity
 import com.example.view.ui.MyCustomViewActivity
 import com.tencent.mmkv.MMKV
-import java.util.*
 
 
 /**
@@ -148,6 +148,8 @@ public class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == PICK_AVATAR_REQUEST) {
             Log.e(TAG, "获取到图片路径====")
+            onPicked(data)
+        } else if (resultCode == ImageTakeActivity.RESULT_OK_IMAGE && requestCode == PICK_AVATAR_REQUEST) {
             onPicked(data)
         }
     }
