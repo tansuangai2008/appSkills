@@ -30,6 +30,7 @@ public class VoteView extends View {
     private RectF mleftRect;
     private float roundWith = 8;
     private float angleWith = 16;
+    private float middleSpace = 4;
     private float greenPercent = 0.1f;
 
     public VoteView(Context context) {
@@ -46,6 +47,7 @@ public class VoteView extends View {
         density = context.getResources().getDisplayMetrics().density;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VoteView, defStyleAttr, 0);
         angleWith = a.getDimension(R.styleable.VoteView_angleWith, angleWith * density);
+        middleSpace = a.getDimension(R.styleable.VoteView_middleSpace, middleSpace * density);
         a.recycle();
     }
 
@@ -70,7 +72,7 @@ public class VoteView extends View {
         canvas.drawArc(leftRect, startAngle, sweepAngle, true, paint);
 
         //计算百分比 算出剩余可参与计算的空间(也就是宽度)
-        float leftContentWidth = getWidth() - angleWith - roundWith;
+        float leftContentWidth = getWidth() - angleWith - roundWith / 2 - middleSpace;
 
         float leftGreen = (float) (leftContentWidth * greenPercent);
         float rightRed = (float) leftContentWidth - leftGreen;

@@ -15,5 +15,6 @@
     <declare-styleable name="VoteView">
         <attr name="roundWith" format="dimension" />
         <attr name="angleWith" format="dimension" />
+        <attr name="middleSpace" format="dimension" />
     </declare-styleable>
 </resources>
