@@ -10,4 +10,10 @@
         <attr name="progressBorderWidth" format="dimension" />
         <attr name="showArrow" format="boolean" />
     </declare-styleable>
+
+    <!--    //获取整个屏幕的宽、左右两块的圆角区域的固定宽度、左右两块斜角区域的固定宽度-->
+    <declare-styleable name="VoteView">
+        <attr name="roundWith" format="dimension" />
+        <attr name="angleWith" format="dimension" />
+    </declare-styleable>
 </resources>
