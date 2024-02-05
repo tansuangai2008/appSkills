@@ -2,9 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <com.example.myruler.MyRulerView
+    <!--    <com.example.myruler.MyRulerView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+    <com.example.vote.VoteView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/dp_size_16"
+        android:layout_marginStart="@dimen/dp_size_16"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/dp_size_16" />
 </LinearLayout>
