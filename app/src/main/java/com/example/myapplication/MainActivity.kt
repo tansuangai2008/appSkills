@@ -137,6 +137,10 @@ public class MainActivity : AppCompatActivity() {
                         getTagStr("LaBuLa!!")
                         MyRulerViewActivity.startAct(this@MainActivity)
                     }
+
+                    FunctionObj.TYPE_CONSTRAINT_FLOW -> {
+
+                    }
                 }
             }
         }
@@ -160,6 +164,7 @@ public class MainActivity : AppCompatActivity() {
         var obj14 = FunctionObj("dataBinding 试炼", FunctionObj.TYPE_DATA_BINDING)
         var obj15 = FunctionObj("coordinator  试炼", FunctionObj.TYPE_COORDINATOR)
         var obj16 = FunctionObj("matrix 试炼", FunctionObj.TYPE_MATRIX)
+        var obj17 = FunctionObj("Constraint  Flow", FunctionObj.TYPE_CONSTRAINT_FLOW)
         list.add(obj1)
         list.add(obj2)
         list.add(obj3)
@@ -176,6 +181,7 @@ public class MainActivity : AppCompatActivity() {
         list.add(obj14)
         list.add(obj15)
         list.add(obj16)
+        list.add(obj17)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

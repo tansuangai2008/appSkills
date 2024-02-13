@@ -28,5 +28,6 @@ class FunctionObj(
         const val TYPE_DATA_BINDING = "14" //dataBinding 试炼
         const val TYPE_COORDINATOR = "15" //coordinator  试炼
         const val TYPE_MATRIX = "16" //matrix 试炼
+        const val TYPE_CONSTRAINT_FLOW = "17" //Constraint  Flow
     }
 }
