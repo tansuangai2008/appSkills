@@ -15,6 +15,7 @@ import com.example.coroutines.CoroutinesActivity
 import com.example.databinding.PersonActivity
 import com.example.dispatch.TouchActivity
 import com.example.fragment.UseFragmentActivity
+import com.example.lanuch.LaunchAct
 import com.example.mvp.UserInfoActivity
 import com.example.myapplication.adapter.FunctionAdapter
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -52,10 +53,19 @@ public class MainActivity : AppCompatActivity() {
         binding.tvUseRoom.test()
 
         initList()
-        val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val linearLayoutManager: LinearLayoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvFunctions.layoutManager = linearLayoutManager
-        val decoration = DividerItemDecoration(binding.rvFunctions.context, linearLayoutManager.orientation)
-        decoration.setDrawable(DividerDrawable(ContextCompat.getColor(binding.root.context, R.color.white), resources.getDimensionPixelOffset(R.dimen.margin_24dp)))
+        val decoration =
+            DividerItemDecoration(binding.rvFunctions.context, linearLayoutManager.orientation)
+        decoration.setDrawable(
+            DividerDrawable(
+                ContextCompat.getColor(
+                    binding.root.context,
+                    R.color.white
+                ), resources.getDimensionPixelOffset(R.dimen.margin_24dp)
+            )
+        )
         binding.rvFunctions.addItemDecoration(decoration)
         functionAdapter = FunctionAdapter(this, list)
         binding.rvFunctions.adapter = functionAdapter
@@ -94,7 +104,11 @@ public class MainActivity : AppCompatActivity() {
                     }
 
                     FunctionObj.TYPE_PHOTO_ALBUM -> {
-                        ImagePickerLauncher.pickImage(this@MainActivity, PICK_AVATAR_REQUEST, R.string.set_head_image)
+                        ImagePickerLauncher.pickImage(
+                            this@MainActivity,
+                            PICK_AVATAR_REQUEST,
+                            R.string.set_head_image
+                        )
                     }
 
                     FunctionObj.TYPE_CONSTRAINT_LAYOUT -> {
@@ -141,6 +155,10 @@ public class MainActivity : AppCompatActivity() {
                     FunctionObj.TYPE_CONSTRAINT_FLOW -> {
 
                     }
+
+                    FunctionObj.TYPE_LAUNCH -> {
+                        LaunchAct.startAct(this@MainActivity)
+                    }
                 }
             }
         }
@@ -148,23 +166,24 @@ public class MainActivity : AppCompatActivity() {
     }
 
     private fun initList() {
-        var obj1 = FunctionObj("使用Room 数据库", FunctionObj.TYPE_ROOM)
-        var obj2 = FunctionObj("canvas 画图", FunctionObj.TYPE_CANVAS_USE)
-        var obj3 = FunctionObj("电子签名", FunctionObj.TYPE_ELECT_SIGN)
-        var obj4 = FunctionObj(" recycleView 拖动", FunctionObj.TYPE_RECYCLE_DRAG)
-        var obj5 = FunctionObj(" app 的黑夜模式", FunctionObj.TYPE_APP_NIGHT_SETTING)
-        var obj6 = FunctionObj(" 相册", FunctionObj.TYPE_PHOTO_ALBUM)
-        var obj7 = FunctionObj(" 约束布局", FunctionObj.TYPE_CONSTRAINT_LAYOUT)
-        var obj8 = FunctionObj(" 事件传递", FunctionObj.TYPE_VIEW_EVENTS)
-        var obj9 = FunctionObj(" android 存储", FunctionObj.TYPE_STORAGE)
-        var obj10 = FunctionObj("携程试炼", FunctionObj.TYPE_COROUTINE)
-        var obj11 = FunctionObj("fragment 试炼", FunctionObj.TYPE_FRAGMENT)
-        var obj12 = FunctionObj("animal 试炼", FunctionObj.TYPE_ANIMAL)
-        var obj13 = FunctionObj("mvp 试炼", FunctionObj.TYPE_MVP)
-        var obj14 = FunctionObj("dataBinding 试炼", FunctionObj.TYPE_DATA_BINDING)
-        var obj15 = FunctionObj("coordinator  试炼", FunctionObj.TYPE_COORDINATOR)
-        var obj16 = FunctionObj("matrix 试炼", FunctionObj.TYPE_MATRIX)
-        var obj17 = FunctionObj("Constraint  Flow", FunctionObj.TYPE_CONSTRAINT_FLOW)
+        val obj1 = FunctionObj("使用Room 数据库", FunctionObj.TYPE_ROOM)
+        val obj2 = FunctionObj("canvas 画图", FunctionObj.TYPE_CANVAS_USE)
+        val obj3 = FunctionObj("电子签名", FunctionObj.TYPE_ELECT_SIGN)
+        val obj4 = FunctionObj(" recycleView 拖动", FunctionObj.TYPE_RECYCLE_DRAG)
+        val obj5 = FunctionObj(" app 的黑夜模式", FunctionObj.TYPE_APP_NIGHT_SETTING)
+        val obj6 = FunctionObj(" 相册", FunctionObj.TYPE_PHOTO_ALBUM)
+        val obj7 = FunctionObj(" 约束布局", FunctionObj.TYPE_CONSTRAINT_LAYOUT)
+        val obj8 = FunctionObj(" 事件传递", FunctionObj.TYPE_VIEW_EVENTS)
+        val obj9 = FunctionObj(" android 存储", FunctionObj.TYPE_STORAGE)
+        val obj10 = FunctionObj("携程试炼", FunctionObj.TYPE_COROUTINE)
+        val obj11 = FunctionObj("fragment 试炼", FunctionObj.TYPE_FRAGMENT)
+        val obj12 = FunctionObj("animal 试炼", FunctionObj.TYPE_ANIMAL)
+        val obj13 = FunctionObj("mvp 试炼", FunctionObj.TYPE_MVP)
+        val obj14 = FunctionObj("dataBinding 试炼", FunctionObj.TYPE_DATA_BINDING)
+        val obj15 = FunctionObj("coordinator  试炼", FunctionObj.TYPE_COORDINATOR)
+        val obj16 = FunctionObj("matrix 试炼", FunctionObj.TYPE_MATRIX)
+        val obj17 = FunctionObj("Constraint  Flow", FunctionObj.TYPE_CONSTRAINT_FLOW)
+        val obj18 = FunctionObj("activity launch", FunctionObj.TYPE_LAUNCH)
         list.add(obj1)
         list.add(obj2)
         list.add(obj3)
@@ -182,6 +201,7 @@ public class MainActivity : AppCompatActivity() {
         list.add(obj15)
         list.add(obj16)
         list.add(obj17)
+        list.add(obj18)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

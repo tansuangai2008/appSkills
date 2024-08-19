@@ -1,8 +1,12 @@
 package com.example.myapplication
 
+import android.app.Activity
+import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import java.util.LinkedList
 
 /**
  *  author : ly
@@ -24,6 +28,7 @@ open abstract class BaseActivity : AppCompatActivity() {
                     widthSize = parent.measuredWidth
                     widthMode = View.MeasureSpec.EXACTLY
                 }
+
                 else -> {
                     widthSize = parent.measuredWidth
                     widthMode = View.MeasureSpec.AT_MOST
@@ -37,6 +42,7 @@ open abstract class BaseActivity : AppCompatActivity() {
                     heightSize = parent.measuredWidth
                     heightMode = View.MeasureSpec.EXACTLY
                 }
+
                 else -> {
                     heightSize = parent.measuredWidth
                     heightMode = View.MeasureSpec.AT_MOST
@@ -45,8 +51,8 @@ open abstract class BaseActivity : AppCompatActivity() {
 
             //标准方法1
             measure(
-                    View.MeasureSpec.makeMeasureSpec(widthSize, widthMode),
-                    View.MeasureSpec.makeMeasureSpec(heightSize, heightMode)
+                View.MeasureSpec.makeMeasureSpec(widthSize, widthMode),
+                View.MeasureSpec.makeMeasureSpec(heightSize, heightMode)
             )
             //标准方法2
             layout(0, 0, measuredWidth, measuredHeight)
@@ -55,4 +61,74 @@ open abstract class BaseActivity : AppCompatActivity() {
             //draw(canvas)
         }
     }
+
+    companion object{
+        var sAllActivitys: LinkedList<Activity> = LinkedList()
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        sAllActivitys.add(this)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun finish() {
+        sAllActivitys.remove(this)
+        super.finish()
+    }
+
+    override fun onPause() {
+        if (isFinishing) {
+            sAllActivitys.remove(this)
+        }
+        Log.e("BaseActivity", "= onPause() = sAllActivitys=" + sAllActivitys + "=size="+sAllActivitys.size)
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        sAllActivitys.remove(this)
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        Log.e("BaseActivity", "= onResume() sAllActivitys=" + sAllActivitys + "=size="+sAllActivitys.size)
+        super.onResume()
+    }
+
+
+    /**
+     * 关掉指定的activity
+     *
+     * @param clazzName
+     */
+    fun finishForActivity(clazzName: String) {
+        for (i in sAllActivitys.size downTo 1) {
+            val activity = sAllActivitys[i - 1]
+            if (activity is MainActivity) {
+                break
+            }
+            if (activity.javaClass.name == clazzName) {
+                activity.finish()
+                break
+            }
+        }
+    }
+
+    /**
+     * 关闭指定一组 activity
+     */
+    fun finishForActivity(vararg clazzName: String) {
+        for (i in sAllActivitys.size downTo 1) {
+            val activity = sAllActivitys[i - 1]
+            if (activity is MainActivity) {
+                break
+            }
+            for (k in clazzName.indices) {
+                if (activity.javaClass.name == clazzName[k]) {
+                    activity.finish()
+                }
+            }
+        }
+    }
+
 }

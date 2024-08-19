@@ -8,8 +8,8 @@ import java.io.Serializable
  *    desc   :
  */
 class FunctionObj(
-        var label: String,
-        var type: String,
+    var label: String,
+    var type: String,
 ) : Serializable {
     companion object {
         const val TYPE_ROOM: String = "01"// 使用Room 数据库
@@ -29,5 +29,6 @@ class FunctionObj(
         const val TYPE_COORDINATOR = "15" //coordinator  试炼
         const val TYPE_MATRIX = "16" //matrix 试炼
         const val TYPE_CONSTRAINT_FLOW = "17" //Constraint  Flow
+        const val TYPE_LAUNCH = "18" //activity 启动的方式
     }
 }

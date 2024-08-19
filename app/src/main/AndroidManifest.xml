@@ -119,6 +119,24 @@
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.example.lanuch.LaunchAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.example.lanuch.LaunchBAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.example.lanuch.LaunchCAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <!--        <activity-->
         <!--            android:name="com.example.TextInputActivity"-->
         <!--            android:configChanges="orientation|screenSize"-->
