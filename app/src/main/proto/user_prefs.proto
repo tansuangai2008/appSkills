@@ -1,0 +1,13 @@
+syntax = "proto3"; //版本
+
+//包名
+option java_package = "com.example.datastore";
+option java_multiple_files = true;
+option java_outer_classname = "UserInfoProto";
+
+message User {
+  //格式：字段类型 + 字段名称 + 字段编号
+  string name = 1;
+  int32 age = 2;
+  bool isMarried = 3;
+}

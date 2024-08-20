@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 //apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'com.google.protobuf'
+
+
 
 //aop begin
 import org.aspectj.bridge.IMessage
@@ -38,12 +41,12 @@ android {
 
     }
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'com.example.myapplication'
+
 }
 
 dependencies {
@@ -78,10 +81,33 @@ dependencies {
     ksp 'com.github.bumptech.glide:compiler:4.14.2'
     implementation 'jp.wasabeef:glide-transformations:4.0.1'
     implementation 'org.aspectj:aspectjrt:1.9.9'
-
+    implementation("androidx.datastore:datastore-preferences-android:1.1.1")
+    implementation("androidx.datastore:datastore:1.1.1")
+    //protobuf
+    implementation  "com.google.protobuf:protobuf-javalite:4.27.3"
 
 
 }
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:4.27.3' // 替换为最新版本
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
+
+    // 默认生成目录 $buildDir/generated/source/proto 通过 generatedFilesBaseDir 改变生成位置
+//    generatedFilesBaseDir = "$projectDir/src/main"
+}
+
+
 
 //test aop
 project.android.applicationVariants.all { variant ->

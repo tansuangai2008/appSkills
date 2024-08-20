@@ -3,15 +3,19 @@ package com.example.databinding;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.datastore.v1.User;
 import com.example.myapplication.BaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.annotation.AspectAnalyze;
 import com.example.myapplication.databinding.ActPersonBinding;
+import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 /**
  * author : ly
@@ -19,6 +23,8 @@ import com.example.myapplication.databinding.ActPersonBinding;
  * description : databinding 试炼
  */
 public class PersonActivity extends BaseActivity {
+
+    private static final String TAG = "PersonActivity";
 
     private Person person = new Person();
 
@@ -36,6 +42,23 @@ public class PersonActivity extends BaseActivity {
         binding.setPerson(person);
         binding.setMainActivity(this);
         getTagStr("BBBB");
+
+        User.Builder userBuilder = User.newBuilder();
+        userBuilder.setName("yyliu");
+        userBuilder.setAge(18);
+        userBuilder.setIsMarried(true);
+        User user = userBuilder.build();
+        //序列化
+        byte[] data = user.toByteArray();
+        Log.e(TAG, "序列化===" + data);
+        //反序列化
+        try {
+            User user1 = User.parseFrom(data);
+            Log.e(TAG, "打印出来的值:" + new Gson().toJson(user1));
+        } catch (InvalidProtocolBufferException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @AspectAnalyze(name = "setButtonClick")
